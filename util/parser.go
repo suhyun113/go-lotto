@@ -26,19 +26,19 @@ func ParseWinningNumbers(numbersStr string) ([]int, error) {
 	raw := strings.TrimSpace(numbersStr)
 	tokens := strings.Split(raw, ",")
 
-	if len(tokens) != constants.LOTTO_SIZE {
-		return nil, fmt.Errorf("당첨 번호는 쉼표로 구분된 %d개의 숫자여야 합니다.", constants.LOTTO_SIZE)
+	if len(tokens) != constants.LottoSize {
+		return nil, fmt.Errorf("당첨 번호는 쉼표로 구분된 %d개의 숫자여야 합니다.", constants.LottoSize)
 	}
 
-	nums := make([]int, 0, constants.LOTTO_SIZE)
+	nums := make([]int, 0, constants.LottoSize)
 	for _, t := range tokens {
 		t = strings.TrimSpace(t)
 		if !onlyDigits.MatchString(t) {
-			return nil, fmt.Errorf("당첨 번호는 쉼표로 구분된 %d개의 숫자여야 합니다.", constants.LOTTO_SIZE)
+			return nil, fmt.Errorf("당첨 번호는 쉼표로 구분된 %d개의 숫자여야 합니다.", constants.LottoSize)
 		}
 		n, err := strconv.Atoi(t)
 		if err != nil {
-			return nil, fmt.Errorf("당첨 번호는 쉼표로 구분된 %d개의 숫자여야 합니다.", constants.LOTTO_SIZE)
+			return nil, fmt.Errorf("당첨 번호는 쉼표로 구분된 %d개의 숫자여야 합니다.", constants.LottoSize)
 		}
 		nums = append(nums, n)
 	}
