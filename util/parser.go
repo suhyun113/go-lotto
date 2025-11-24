@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"string"
 
-	"go-lotto/constants"
+	"github.com/suhyun113/go-lotto/constants"
 )
 
 func ParseAmount(amountStr string) (int, error) {

@@ -1,6 +1,6 @@
 package domain
 
-import "go-lotto/constants"
+import "github.com/suhyun113/go-lotto/constants"
 
 func DetermineRank(matchCount int, bonusMatch bool) constants.Rank {
 	switch matchCount {

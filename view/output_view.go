@@ -3,9 +3,9 @@ package view
 import (
 	"fmt"
 
-	"go-lotto/domain"
-	"go-lotto/util"
-	"go-lotto/constants"
+	"github.com/suhyun113/go-lotto/domain"
+	"github.com/suhyun113/go-lotto/util"
+	"github.com/suhyun113/go-lotto/constants"
 )
 
 type OutputView struct{}

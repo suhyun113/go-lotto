@@ -6,8 +6,8 @@ import (
 	"time"
 	"sort"
 
-	"go-lotto/constants"
-	"go-lotto/domain"
+	"github.com/suhyun113/go-lotto/constants"
+	"github.com/suhyun113/go-lotto/domain"
 )
 
 type LottoService struct {

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"go-lotto/service"
-	"go-lotto/view"
+	"github.com/suhyun113/go-lotto/service"
+	"github.com/suhyun113/go-lotto/view"
 )
 
 func main() {

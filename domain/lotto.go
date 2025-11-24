@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sort"
 
-	"go-lotto/constants"
+	"github.com/suhyun113/go-lotto/constants"
 )
 
 type Lotto struct {

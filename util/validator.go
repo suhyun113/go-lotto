@@ -3,7 +3,7 @@ package util
 import (
 	"fmt"
 
-	"go-lotto/constants"
+	"github.com/suhyun113/go-lotto/constants"
 )
 
 func inRange(n int) bool {

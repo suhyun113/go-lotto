@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"go-lotto/util"
-	"go-lotto/domain"
+	"github.com/suhyun113/go-lotto/util"
+	"github.com/suhyun113/go-lotto/domain"
 )
 
 type InputView struct {
