@@ -72,7 +72,7 @@ go-lotto/
 **4) service**
 > 애플리케이션 핵심 비즈니스 로직
 
-**5) view(IO)
+**5) view(IO)**
 > 입력 처리 & 출력 UI
 
 ---
