@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"regexp"
 	"strconv"
-	"string"
+	"strings"
 
 	"github.com/suhyun113/go-lotto/constants"
 )
+
+var onlyDigits = regexp.MustCompile(`^\d+$`)
 
 func ParseAmount(amountStr string) (int, error) {
 	amount := strings.TrimSpace(amountStr)
