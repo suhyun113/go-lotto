@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 	"sort"
@@ -34,4 +35,22 @@ func (s *LottoService) GenerateTicket() (*domain.Lotto, error) {
 
 	sort.Ints(nums)
 	return domain.NewLotto(nums)
+}
+
+func (s *LottoService) IssueTickets(money int) ([]*domain.Lotto, error) {
+	if money < constants.LottoPrice || money%constants.LottoPrice != 0 {
+		return nil, fmt.Errorf("구입 금액은 %d원 단위여야 합니다.", constants.LottoPrice)
+	}
+
+	count := money / constants.LottoPrice
+	tickets := make([]*domain.Lotto, 0, count)
+
+	for i := 0; i < count; i++ {
+		t, err := s.GenerateTicket()
+		if err != nil {
+			return nil, err
+		}
+		tickets = append(tickets, t)
+	}
+	return tickets, nil
 }
