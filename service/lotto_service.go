@@ -54,3 +54,46 @@ func (s *LottoService) IssueTickets(money int) ([]*domain.Lotto, error) {
 	}
 	return tickets, nil
 }
+
+func (s *LottoService) MatchCounter(ticket *domain.Lotto, winning *domain.Lotto) int {
+	return ticket.MatchCount(winning)
+}
+
+func (s *LottoService) RankResolver(ticket *domain.Lotto, winning *domain.Lotto, bonus int) constants.Rank {
+	matchCount := ticket.MatchCount(winning)
+	bonusMatch := ticket.Contains(bonus)
+	return domain.DetermineRank(matchCount, bonusMatch)
+}
+
+func (s *LottoService) Evaluate(
+	tickets []*domain.Lotto,
+	winning *domain.Lotto,
+	bonus int,
+) (map[constants.Rank]int, int64) {
+
+	rankCounts := map[constants.Rank]int{
+		constants.RankFirst:  0,
+		constants.RankSecond: 0,
+		constants.RankThird:  0,
+		constants.RankFourth: 0,
+		constants.RankFifth:  0,
+		constants.RankNone:   0,
+	}
+
+	var totalPrize int64 = 0
+
+	for _, t := range tickets {
+		rank := s.RankResolver(t, winning, bonus)
+		rankCounts[rank]++
+		totalPrize += constants.Prize[rank]
+	}
+
+	return rankCounts, totalPrize
+}
+
+func (s *LottoService) CalcProfitRate(totalPrize int64, money int) float64 {
+	if money == 0 {
+		return 0
+	}
+	return float64(totalPrize) / float64(money) * 100.0
+}
