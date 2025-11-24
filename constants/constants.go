@@ -1,10 +1,10 @@
 package constants
 
 const (
-	LOTTO_MIN   = 1
-	LOTTO_MAX   = 45
-	LOTTO_SIZE  = 6
-	LOTTO_PRICE = 1000
+	LottoMin = 1
+	LottoMax = 45
+	LottoSize = 6
+	LottoPrice = 1000
 )
 
 type Rank int
