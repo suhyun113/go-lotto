@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"go-lotto/util"
+	"go-lotto/domain"
 )
 
 type InputView struct {
@@ -40,5 +41,53 @@ func (iv *InputView) ReadPurchaseMoney() int {
 		}
 
 		return amount
+	}
+}
+
+func (iv *InputView) ReadWinningNumbers() *domain.Lotto {
+	for {
+		fmt.Println("\n당첨 번호를 입력해 주세요.")
+		line := iv.readLine()
+
+		nums, err := util.ParseWinningNumbers(line)
+		if err != nil {
+			PrintError(err)
+			continue
+		}
+
+		nums, err = util.ValidateWinningNumbers(nums)
+		if err != nil {
+			PrintError(err)
+			continue
+		}
+
+		lotto, err := domain.NewLotto(nums)
+		if err != nil {
+			PrintError(err)
+			continue
+		}
+
+		return lotto
+	}
+}
+
+func (iv *InputView) ReadBonusNumber(winning *domain.Lotto) int {
+	for {
+		fmt.Println("\n보너스 번호를 입력해 주세요.")
+		line := iv.readLine()
+
+		bonus, err := util.ParseBonusNumber(line)
+		if err != nil {
+			PrintError(err)
+			continue
+		}
+
+		bonus, err = util.ValidateBonusNumber(bonus, winning.GetNumbers())
+		if err != nil {
+			PrintError(err)
+			continue
+		}
+
+		return bonus
 	}
 }
